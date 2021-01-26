@@ -1,2 +1,11 @@
 # curex_group
-orders
+This project was tasked with explaining the reasons why a currency trade was executed by an overall group and individually by firm. The features given had a lot of multicollinearity so I had to trim down the features mainly for explainability reasons. Overfitting wasn't really an issue given the project, but multicollinearity was a big issue and I was forced to discard many of the features. For some of the features I grouped the trades by currency and also used a z-score to normalize across currency pairs. Instead of using different prices and time stamps, I took the differences between the spreads. There were a few categorical features that were the biggest determinates, but seeing a breakdown of all of the components was ideal for the team to be able to present to their clients. 
+
+ MODEL: I used a random forest as a model, and kept the model as simple as possible for best intrepretability. To find the feature importance, I used permuation feature importance, to shuffle the different variables. It was the best way to nail down how the random changes in the model would affect the loss of the model.
+ 
+ Degree of freedom: Using a degree of freedom for the categorical features created a tough issue for end user interpretability. After running the model through the permutation feature importance I combined the dummy variables into one category.
+
+Individual predictions: I used a few different libraries to help explain individual data points. ELI5,LIME,TreeInterpreter, InterpretML, SHAP, are all usefull libraries for individual interpretations. I wasn't able to get SHAP past the security protocols of IT, but I was able to use all of the other interpreters. InterpretML has a great dashboard and is very robust, but tough to work without paying for the premium service. I ended up using LIME as my interpreter. It makes synthetic data points around the data point being interpreted and has a very thorough documentation for its modeling. The visualiztion and output of the data was great, and I found very interesting ways models are interpreted using these different techniques. 
+
+Conclusion: This project was a great learning experience for interpretability. It is a complex area of datascience, and I think crucial for the business partners to be able to look inside of the model and get a better understanding of everything.
+ 
